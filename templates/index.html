@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诗歌鉴赏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 添加marked.js库用于解析Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>诗歌鉴赏</h1>
+            <p>输入诗歌，AI将为您提供鉴赏分析</p>
+        </header>
+        
+        <main>
+            <div class="input-section">
+                <textarea id="poem-input" placeholder="请在此输入诗歌..."></textarea>
+                <div class="controls">
+                    <div class="language-selector">
+                        <label for="language-select">输出语言：</label>
+                        <select id="language-select">
+                            <option value="chinese" selected>中文</option>
+                            <option value="english">英文</option>
+                        </select>
+                    </div>
+                    <button id="analyze-btn">鉴赏分析</button>
+                </div>
+            </div>
+            
+            <div class="result-section" id="result-section">
+                <div class="loader" id="loader"></div>
+                
+                <div class="result-content" id="result-content">
+                    <div class="score-container">
+                        <div class="score" id="score">--</div>
+                        <div class="score-label">分数</div>
+                    </div>
+                    
+                    <div class="analysis-container">
+                        <div id="famous-section" style="display: none;">
+                            <h2>著名诗歌分析</h2>
+                            <div class="info-row">
+                                <strong>作者:</strong> <span id="author">--</span>
+                            </div>
+                            <div class="info-row">
+                                <strong>创作时间:</strong> <span id="creation-time">--</span>
+                            </div>
+                            <div class="info-row">
+                                <strong>历史背景:</strong>
+                                <p id="background">--</p>
+                            </div>
+                        </div>
+                        
+                        <div id="original-section" style="display: none;">
+                            <h2>原创诗歌分析</h2>
+                            <div class="info-row">
+                                <strong>作者心境:</strong>
+                                <p id="state-of-mind">--</p>
+                            </div>
+                        </div>
+                        
+                        <div class="appreciation-section">
+                            <h2>鉴赏内容</h2>
+                            <div id="appreciation">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 诗歌鉴赏 | 基于AI的诗歌分析工具</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
